@@ -5,15 +5,15 @@
     with 1080p (FHD) quality on "The Pirate Bay"!
 
     Author: blvckp
-    Version: 0.3
+    Version: 0.4
 """
 
 import requests
 from BeautifulSoup import BeautifulSoup
 import re
 
-URL_BASE = 'https://thepiratebay.org/search/Mr.Robot.S02E'
-URL_CATEGORY = '/0/99/200'
+URL_BASE = 'https://thepiratebay.org/search/Mr.Robot.'
+#URL_CATEGORY = '/0/99/200' # Some problems with (database falls)
 
 def get_content(episode = ''):
 
@@ -53,7 +53,7 @@ def parse_content(content):
 def check_input(string = ""):
     if string.isdigit():
         if int(string) < 10 and len(string) < 2:
-            return '0'+ string
+            return '0' + string
         else:
             return string
     else:
@@ -63,14 +63,22 @@ def check_input(string = ""):
 if __name__ == "__main__":
 
     print "Which episode you are searching?\n"
+    season = ""
     episode = ""
+
+    while True:
+        season = check_input(raw_input("Season #"))
+        if season is not False:
+            break
 
     while True:
         episode = check_input(raw_input("Episode #"))
         if episode is not False:
             break
 
-    content = get_content(URL_BASE + episode + URL_CATEGORY)
+    print URL_BASE + 'S' + season + 'E' + episode
+
+    content = get_content(URL_BASE + 'S' + season + 'E' + episode)
     if content is not False:
         parse_content(str(content))
     else:
