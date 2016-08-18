@@ -1,4 +1,4 @@
-#Magnet link searcher Mr.Robot (Season 2)
+#Magnet link searcher Mr.Robot
 
 This program searches magnet links of episodes with 1080p (FHD) quality on "The Pirate Bay"!
 
