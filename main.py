@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 """
     This program searches magnet links of episodes
     with 1080p (FHD) quality on "The Pirate Bay"!
@@ -50,7 +52,7 @@ def parse_content(content):
 
 def check_input(string = ""):
     if string.isdigit():
-        if int(string) < 10:
+        if int(string) < 10 and len(string) < 2:
             return '0'+ string
         else:
             return string
